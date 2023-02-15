@@ -17,10 +17,10 @@ Timothy Riedel
 triedel@utexas.edu
  
 Brief Description of Goal of Code:
-blah, blah, blah,
+Implement an alternate diagnostic app, similar to coding for the Cold or Allergies App, and add picture material.
  
 Known Issues:
-blah, blah, blah, blah
+Will fill in when issues come up.
 Ignore this error message if you see it using the javaScript console: Error with Permissions-Policy header: Origin trial controlled feature not enabled: 'interest-cohort'.
 
 References:
@@ -37,8 +37,37 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 </head> 
 
 <script>
+        var allergy_count = 0;
+        var cold_count = 0;
 
+	//This function accounts for adding together the allergy count whenever yes or no is hit for a question that's answer is allergy.
+        function allergyAdd(){
+            allergy_count = allergy_count + 1;
+		alert(allergy_count);
+
+        }
+	//This function is to count the number of answers that correspond with the symptoms of having a cold.
+        function coldAdd(){
+            cold_count = cold_count + 1;
+        }
+	//This is the function that compeletes the final percentage computation of allergy percent and cold percent.
+	function getResults()
+	  {
+		//totalCount variable calculates for overall number of counts.
+		//allergyPercent and coldPercent variables make the final percentages of how likely an individual has a cold or allergy.
+		//Variable resultText aids in displaying final results on the last page.
+		var totalCount = allergy_count + cold_count;
+       		var allergyPercent = (allergy_count / totalCount) * 100;
+        	var coldPercent = (cold_count / totalCount) * 100;
+		var resultText = document.getElementById("results");
+	  
+       		//document.getElementById("result"). Problem piece.
+		//Inclusion of above comment was issue. I needed to be using variable name instead of document.
+		  
+		resultText.innerHTML = "Probability it is allergies: " + allergyPercent + "% <br>" + "Probability it is a cold: " + coldPercent + "%";
+	  }
 	//YOUR JAVASCRIPT GOES HERE
+	//Added Javascript from App 3 Cold or Allergy code.
 
 </script>	
 
@@ -67,9 +96,127 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 </style>
 
 <body>
+<!-- HERE IS WHERE ALL OF YOUR HTML PAGES GO -->
+<div id="header" class="w3-container w3-flat-carrot">
+	<h1>Cold or Allergies?</h1>
+</div>
 	
-	<!-- HERE IS WHERE ALL OF YOUR HTML PAGES GO -->
-	REPLACE THIS TEXT
+<div id="content" class="w3-container">
+	<p>Are you feeling like you might have a cold but wonder if it is allergies. Answer a few short questions to find out!</p>
+	
+	<a href="#one" class="w3-btn w3-grey w3-round"> Get Started </a>
+	
+	<p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
+ 	
+	<p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
+	
+	<!-- Above information accounts for what is seen on first page (this is given), and is the start of the button functionality between multiple pages.-->
+
+<div class="page" id="one">
+	<div id="header" class="w3-container w3-flat-carrot">
+		<h1>Question 1</h1>
+	</div>
+	
+    	<div id="content" class="w3-container">
+		<p>Are your eyes watery or itchy?</p>    
+		<a href="#two"  onclick="allergyAdd();" class="w3-btn w3-black"> Yes</a>
+        	<a href="#two"  onclick="coldAdd();" class="w3-btn w3-black">No</a>
+		<!--Making a yes or no button. Yes will go towards allergy count and no goes towards cold. Apply to each question's button.-->
+    	</div>
+</div>
+
+<div class="page" id="two">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 2</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+		<p>Do you have a fever?</p>
+		<a href="#three"  onclick="coldAdd();" class="w3-btn w3-black">Yes</a>
+		<a href="#three"  onclick="allergyAdd();" class="w3-btn w3-black"> No</a> 
+		<!--Having a fever will add to cold, while not having a fever will not.-->
+		<!--Same practice as page one used, except this time it is directing to page 3. It should continue in sequential order.-->
+	</div>
+</div>
+
+<div class="page" id="three">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 3</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+		<p>Do you have a sore throat?</p>		
+        	<a href="#four"  onclick="coldAdd();" class="w3-btn w3-black">Yes</a>
+		<a href="#four"  onclick="allergyAdd();" class="w3-btn w3-black"> No</a>
+		<!--In this question, having a sore throat will add to cold count, but no will work against allegy count.-->
+		<!--Asking alternative questions to get a difference in totals or percentages between allergy and cold.-->
+	</div>
+</div>
+
+<div class="page" id="four">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 4</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+		<p>Are your symptoms seasonal or chronic?</p>
+		<a href="#five"  onclick="allergyAdd();" class="w3-btn w3-black"> Yes</a>
+        	<a href="#five"  onclick="coldAdd();" class="w3-btn w3-black">No</a>
+		<!--Button function. Yes if symptoms are season adds to allergy and no for chronic adds against cold count.-->
+	</div>
+</div>
+
+<div class="page" id="five">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 5</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+		<p>Are you experiencing a rash or hive-like symptoms?</p>
+		<a href="#six"  onclick="allergyAdd();" class="w3-btn w3-black"> Yes</a>
+        	<a href="#six"  onclick="coldAdd();" class="w3-btn w3-black">No</a>
+		<!--If the individial is experiencing this, it will add to allergy through Yes. If not, No should be clicked going against cold.-->
+	</div>
+</div>
+
+<div class="page" id="six">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 6</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+		<p>Are you having headache or migraine symptoms?</p>
+		<a href="#results"  onclick="coldAdd();" class="w3-btn w3-black">Yes</a>
+		<a href="#results"  onclick="allergyAdd();" class="w3-btn w3-black"> No</a>
+		<!--These symptoms would add to cold and take away from the allergy add.-->
+		<!--Final question, so next page will direct individuals to results and final computation of percent cold and percent allergy.-->
+	</div>
+</div>
+
+<div class="page" id="results">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Results</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+		<button onclick= "getResults();">Results</button>
+		<!-- Different method for making buttons utilized!-->
+		<p id="results"></p>
+		<!-- Should work to display percentages received from getResults function! -->
+		
+		<!--
+		<p id="results"> Probability it is allergies = allergyPercent <br> Probability it is a cold = coldPercent </p>
+		<a href="#results" class="w3-btn w3-black"> FinalResults </a>
+		-->
+ 		<!--Having a lot of trouble with results display. May be issue between connection with this and the script located in beginning of code.-->
+		<!-- UPDATE! Above two comments accounted for difficulties that were fixed by replacing resultText variable function with its name in the innerHTML element.-->
+	</div>
+</div>
+
+<footer class="w3-bottom w3-container w3-flat-carrot">
+	<p>DIY!</p>
+</footer>
+	
 	
 </body>
 </html>
