@@ -37,18 +37,18 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 </head> 
 
 <script>
-        var allergy_count = 0;
-        var cold_count = 0;
+        var yeast_count = 0;
+        var uti_count = 0;
 
 	//This function accounts for adding together the allergy count whenever yes or no is hit for a question that's answer is allergy.
-        function allergyAdd(){
-            allergy_count = allergy_count + 1;
-		alert(allergy_count);
+        function yeastAdd(){
+            yeast_count = yeast_count + 1;
+		alert(yeast_count);
 
         }
 	//This function is to count the number of answers that correspond with the symptoms of having a cold.
-        function coldAdd(){
-            cold_count = cold_count + 1;
+        function utiAdd(){
+            uti_count = uti_count + 1;
         }
 	//This is the function that compeletes the final percentage computation of allergy percent and cold percent.
 	function getResults()
@@ -56,15 +56,15 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 		//totalCount variable calculates for overall number of counts.
 		//allergyPercent and coldPercent variables make the final percentages of how likely an individual has a cold or allergy.
 		//Variable resultText aids in displaying final results on the last page.
-		var totalCount = allergy_count + cold_count;
-       		var allergyPercent = (allergy_count / totalCount) * 100;
-        	var coldPercent = (cold_count / totalCount) * 100;
+		var totalCount = yeast_count + uti_count;
+       		var yeastPercent = (yeast_count / totalCount) * 100;
+        	var utiPercent = (uti_count / totalCount) * 100;
 		var resultText = document.getElementById("results");
 	  
        		//document.getElementById("result"). Problem piece.
 		//Inclusion of above comment was issue. I needed to be using variable name instead of document.
 		  
-		resultText.innerHTML = "Probability it is allergies: " + allergyPercent + "% <br>" + "Probability it is a cold: " + coldPercent + "%";
+		resultText.innerHTML = "Probability it is a yeast infection: " + yeastPercent + "% <br>" + "Probability it is a UTI: " + utiPercent + "%";
 	  }
 	//YOUR JAVASCRIPT GOES HERE
 	//Added Javascript from App 3 Cold or Allergy code.
@@ -105,11 +105,11 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 <body>
 <!-- HERE IS WHERE ALL OF YOUR HTML PAGES GO -->
 <div id="header" class="w3-container w3-flat-carrot">
-	<h1>Cold or Allergies?</h1>
+	<h1>UTI or Yeast Infection?</h1>
 </div>
 	
 <div id="content" class="w3-container">
-	<p>Are you feeling like you might have a cold but wonder if it is allergies. Answer a few short questions to find out!</p>
+	<p>Are you feeling like you might have a UTI but wonder if it could be a yeast infection?. Answer a few short questions to find out!</p>
 	
 	<a href="#one" class="w3-btn w3-grey w3-round"> Get Started </a>
 	
@@ -127,9 +127,9 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 	</div>
 	
     	<div id="content" class="w3-container">
-		<p>Are your eyes watery or itchy?</p>    
-		<a href="#two"  onclick="allergyAdd();" class="w3-btn w3-black"> Yes</a>
-        	<a href="#two"  onclick="coldAdd();" class="w3-btn w3-black">No</a>
+		<p>Do you have consistent abdominal pain or nausea and vomiting?</p>    
+		<a href="#two"  onclick="utiAdd();" class="w3-btn w3-black"> Yes</a>
+        	<a href="#two"  onclick="yeastAdd();" class="w3-btn w3-black">No</a>
 		<!--Making a yes or no button. Yes will go towards allergy count and no goes towards cold. Apply to each question's button.-->
     	</div>
 </div>
@@ -140,9 +140,9 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 	</div>
 	
 	<div id="content" class="w3-container">
-		<p>Do you have a fever?</p>
-		<a href="#three"  onclick="coldAdd();" class="w3-btn w3-black">Yes</a>
-		<a href="#three"  onclick="allergyAdd();" class="w3-btn w3-black"> No</a> 
+		<p>Has your urine output been discolored, cloudy, red, or pink?</p>
+		<a href="#three"  onclick="utiAdd();" class="w3-btn w3-black">Yes</a>
+		<a href="#three"  onclick="yeastAdd();" class="w3-btn w3-black"> No</a> 
 		<!--Having a fever will add to cold, while not having a fever will not.-->
 		<!--Same practice as page one used, except this time it is directing to page 3. It should continue in sequential order.-->
 	</div>
@@ -154,9 +154,9 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 	</div>
 	
 	<div id="content" class="w3-container">
-		<p>Do you have a sore throat?</p>		
-        	<a href="#four"  onclick="coldAdd();" class="w3-btn w3-black">Yes</a>
-		<a href="#four"  onclick="allergyAdd();" class="w3-btn w3-black"> No</a>
+		<p>Does your discharge look unusual (possible denser and whiter)?</p>		
+        	<a href="#four"  onclick="yeastAdd();" class="w3-btn w3-black">Yes</a>
+		<a href="#four"  onclick="utiAdd();" class="w3-btn w3-black"> No</a>
 		<!--In this question, having a sore throat will add to cold count, but no will work against allegy count.-->
 		<!--Asking alternative questions to get a difference in totals or percentages between allergy and cold.-->
 	</div>
@@ -168,9 +168,9 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 	</div>
 	
 	<div id="content" class="w3-container">
-		<p>Are your symptoms seasonal or chronic?</p>
-		<a href="#five"  onclick="allergyAdd();" class="w3-btn w3-black"> Yes</a>
-        	<a href="#five"  onclick="coldAdd();" class="w3-btn w3-black">No</a>
+		<p>Do you experience the feeling of frequently having to urinate?</p>
+		<a href="#five"  onclick="utiAdd();" class="w3-btn w3-black"> Yes</a>
+        	<a href="#five"  onclick="yeastAdd();" class="w3-btn w3-black">No</a>
 		<!--Button function. Yes if symptoms are season adds to allergy and no for chronic adds against cold count.-->
 	</div>
 </div>
@@ -181,9 +181,9 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 	</div>
 	
 	<div id="content" class="w3-container">
-		<p>Are you experiencing a rash or hive-like symptoms?</p>
-		<a href="#six"  onclick="allergyAdd();" class="w3-btn w3-black"> Yes</a>
-        	<a href="#six"  onclick="coldAdd();" class="w3-btn w3-black">No</a>
+		<p>Are you experiencing pain or burning during sexual intercourse?</p>
+		<a href="#six"  onclick="yeastAdd();" class="w3-btn w3-black"> Yes</a>
+        	<a href="#six"  onclick="utiAdd();" class="w3-btn w3-black">No</a>
 		<!--If the individial is experiencing this, it will add to allergy through Yes. If not, No should be clicked going against cold.-->
 	</div>
 </div>
@@ -194,9 +194,9 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 	</div>
 	
 	<div id="content" class="w3-container">
-		<p>Are you having headache or migraine symptoms?</p>
-		<a href="#results"  onclick="coldAdd();" class="w3-btn w3-black">Yes</a>
-		<a href="#results"  onclick="allergyAdd();" class="w3-btn w3-black"> No</a>
+		<p>Have your symptoms been subdued by over the counter medication??</p>
+		<a href="#results"  onclick="utiAdd();" class="w3-btn w3-black">Yes</a>
+		<a href="#results"  onclick="yeastAdd();" class="w3-btn w3-black"> No</a>
 		<!--These symptoms would add to cold and take away from the allergy add.-->
 		<!--Final question, so next page will direct individuals to results and final computation of percent cold and percent allergy.-->
 	</div>
@@ -212,11 +212,6 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 		<!-- Different method for making buttons utilized!-->
 		<p id="results"></p>
 		<!-- Should work to display percentages received from getResults function! -->
-		
-		<!--
-		<p id="results"> Probability it is allergies = allergyPercent <br> Probability it is a cold = coldPercent </p>
-		<a href="#results" class="w3-btn w3-black"> FinalResults </a>
-		-->
  		<!--Having a lot of trouble with results display. May be issue between connection with this and the script located in beginning of code.-->
 		<!-- UPDATE! Above two comments accounted for difficulties that were fixed by replacing resultText variable function with its name in the innerHTML element.-->
 	</div>
